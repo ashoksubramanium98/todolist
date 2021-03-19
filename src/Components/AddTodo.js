@@ -1,6 +1,6 @@
 import React, {useState, useContext} from "react";
 import AddTodoModal from './ui/Modal';
-import {Container, Header, AddIcon} from './styles';
+import {AddIcon} from './styles';
 import {TodoContext} from "./TodoContextProvider";
 import UniqueString from "../lib/uniqueId";
 import DB from "../lib/db";
@@ -30,11 +30,10 @@ const AddTodo = () => {
     }
 
     return (
-        <Container>
-            <Header>Todo List</Header>
+        <>
             <AddIcon onClick={() => setAddPopup(!showAddPopup)} />
             <AddTodoModal modalIsOpen={showAddPopup} closeModal={() => setAddPopup(!showAddPopup)} onChange={(value) => setTodoName(value)} todoText={TodoName} submitTodo={handleAddNewTodo} />
-        </Container>
+        </>
     );
 };
 

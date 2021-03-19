@@ -4,14 +4,20 @@ import {VscAdd} from 'react-icons/vsc';
 
 export const Container = styled.div`
     width: 30%;
-    margin: 20px auto;
+    margin: 50px auto;
     display: flex;
     flex-direction: column;
     padding: 10px;
-    justify-content: space-between;
     border: 2px solid red;
     border-radius: 4px;
     position: relative;
+    min-height: 500px;
+    @media (max-width: 900px){
+        width: 60%;
+    }
+    @media (max-width: 600px){
+        width: 80%;
+    }
 `;
 
 export const Header = styled.div`
@@ -39,6 +45,7 @@ export const AddIcon = styled(VscAdd)`
     bottom: 10px;
     right: 10px;
     cursor: pointer;
+    display: flex;
 `;
 
 export const TodoData = styled.div`
