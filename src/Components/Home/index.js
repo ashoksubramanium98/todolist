@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 import randomInt from 'random-int';
-import {addTodo, deleteTodo} from '../../Actions';
 import AddTodoModal from './ui/Modal';
 import {Container, Header, AddIcon, TodoListContainer, TodoData, TodoName, DeleteIcon} from './styles';
 
@@ -80,13 +78,4 @@ class Home extends Component{
     };
 };
 
-const mapStateToProps = ({TodoList}) => ({
-    todoArr: []
-});
-
-const mapDispatchToProps = () => ({
-    addTodo: () => dispatchEvent(addTodo()),
-    deleteTodo: () => dispatchEvent(deleteTodo())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;
