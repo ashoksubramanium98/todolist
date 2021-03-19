@@ -1,16 +1,15 @@
 import React, {Suspense} from 'react';
-import MenuContextProvider from "./Components/MenuContextProvider";
-import Menu from "./Components/Menu";
+import TodoContextProvider from "./Components/TodoContextProvider";
+import Todo from "./Components/Todo";
 import AddTodo from "./Components/AddTodo";
-import './Components/index.css';
 
 const App = () => (
     <>
     	<Suspense fallback={<p>Loading...</p>}>
-			<MenuContextProvider>
+			<TodoContextProvider>
 				<AddTodo />
-				<Menu />
-			</MenuContextProvider>
+				<Todo />
+			</TodoContextProvider>
 		</Suspense>
     </>
 );

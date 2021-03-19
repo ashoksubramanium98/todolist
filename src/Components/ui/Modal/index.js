@@ -5,15 +5,15 @@ import {PrimaryButton} from '../Button';
 
 const customStyles = {
     content : {
-      top                   : '40%',
-      left                  : '50%',
-      right                 : 'auto',
-      bottom                : 'auto',
-      transform             : 'translate(-50%, -50%)'
-    }
-  };
- 
-  const AddTodoModal = ({modalIsOpen, closeModal, onChange, todoText, submitTodo}) => (
+		top                   : '40%',
+		left                  : '50%',
+		right                 : 'auto',
+		bottom                : 'auto',
+		transform             : 'translate(-50%, -50%)'
+	}
+};
+
+const AddTodoModal = ({modalIsOpen, closeModal, onChange, todoText, submitTodo}) => (
     <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -25,6 +25,6 @@ const customStyles = {
             <PrimaryButton primary onClick={submitTodo}>Add</PrimaryButton>
         </div>
     </Modal>
-  );
+);
 
-  export default AddTodoModal;
+export default AddTodoModal;
