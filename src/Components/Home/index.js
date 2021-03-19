@@ -22,7 +22,6 @@ class Home extends Component{
 
     componentDidUpdate(prevProps, prevState){
         const {arr} = this.state;
-        console.log('arr', arr)
         if(arr.length !== prevState.arr.length){
             this.setState({
                 showAddPopup: false,

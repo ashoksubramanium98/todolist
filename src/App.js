@@ -1,8 +1,18 @@
-import React from 'react';
-import Home from './Components/Home';
+import React, {Suspense} from 'react';
+import MenuContextProvider from "./Components/MenuContextProvider";
+import Menu from "./Components/Menu";
+import AddTodo from "./Components/AddTodo";
+import './Components/index.css';
 
 const App = () => (
-    <Home />
+    <>
+    	<Suspense fallback={<p>Loading...</p>}>
+			<MenuContextProvider>
+				<AddTodo />
+				<Menu />
+			</MenuContextProvider>
+		</Suspense>
+    </>
 );
 
 export default App;
