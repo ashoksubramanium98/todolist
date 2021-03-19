@@ -21,7 +21,8 @@ const Todo = () => {
             todoID
         );
 
-        await Axios.delete(`https://6054ca5bd4d9dc001726e058.mockapi.io/todo/${id}`);
+        let onLine = window.navigator.onLine;
+        onLine && await Axios.delete(`https://6054ca5bd4d9dc001726e058.mockapi.io/todo/${id}`);
         setTimeout(() => setTodoList(remaining), 300);
     };
 

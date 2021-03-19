@@ -17,9 +17,15 @@ const AddTodo = () => {
             name: TodoName,
             createdAt: new Date().getTime()
         };
-        let {data} = await Axios.post('https://6054ca5bd4d9dc001726e058.mockapi.io/todo', payload);
+        let onLine = window.navigator.onLine;
+        let {data} = onLine ? await Axios.post('https://6054ca5bd4d9dc001726e058.mockapi.io/todo', payload) : {data: false};
 
-        if(data && data.id){
+        if((data && data.id) || !onLine){
+            let newData = onLine ? {...data} : {
+                todoID: new UniqueString().generate(), 
+                name: TodoName,
+                createdAt: new Date().getTime()
+            };
             const db = await DB.openDB("TodoDatabase", 1);
             const todoStore = await DB.transaction(
                 db,
@@ -27,7 +33,7 @@ const AddTodo = () => {
                 "readwrite"
             ).getStore("todo");
 
-            const newTodo = await DB.addObjectData(todoStore, {...data});
+            const newTodo = await DB.addObjectData(todoStore, newData);
             setTodoList(newTodo);
             setAddPopup(!showAddPopup);
             setTodoName("");

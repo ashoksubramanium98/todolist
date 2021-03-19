@@ -18,6 +18,7 @@ const AddTodoModal = ({modalIsOpen, closeModal, onChange, todoText, submitTodo})
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
+        ariaHideApp={false}
     >
         <div style={{display: 'flex', flexDirection: 'column'}}>
             <p style={{margin: 0}}>Add your todo</p>
