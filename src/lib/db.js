@@ -210,7 +210,7 @@ const DB = {
     getAllObjectData,
     addObjectData,
     deleteObjectData,
-    updateObjectData,
+    updateObjectData
 };
 
 export default DB;

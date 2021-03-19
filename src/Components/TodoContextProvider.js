@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
+import Axios from 'axios';
 import DB from "../lib/db";
 import suspender from "../lib/suspender";
 
 async function setUpDatabase() {
+    let {data} = await Axios.get('https://6054ca5bd4d9dc001726e058.mockapi.io/todo');
     return await DB.createDB("TodoDatabase", 1, [{
         name: "todo",
-        config: {keyPath: "todoID"}
+        config: {keyPath: "todoID"},
+        data
     }]);
 }
 

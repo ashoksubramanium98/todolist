@@ -1,4 +1,5 @@
 import React, {useContext} from "react";
+import Axios from 'axios';
 import AddTodo from './AddTodo';
 import {Container, Header, TodoListContainer, TodoData, TodoName, DeleteIcon} from './styles';
 import {TodoContext} from "./TodoContextProvider";
@@ -7,7 +8,7 @@ import DB from "../lib/db";
 const Todo = () => {
     const {todoList, setTodoList} = useContext(TodoContext);
 
-    const removeTodo = async (todoID) => {
+    const removeTodo = async (id, todoID) => {
         const db = await DB.openDB("TodoDatabase", 1);
         const todoStore = await DB.transaction(
             db,
@@ -19,6 +20,8 @@ const Todo = () => {
             todoStore,
             todoID
         );
+
+        await Axios.delete(`https://6054ca5bd4d9dc001726e058.mockapi.io/todo/${id}`);
         setTimeout(() => setTodoList(remaining), 300);
     };
 
@@ -28,10 +31,10 @@ const Todo = () => {
             <AddTodo />
             {(todoList.length === 0) ? <p style={{textAlign: 'center', color: '#333'}}>Add your first todo</p> : 
             <TodoListContainer>
-                {todoList.map(({todoID, name}, index) => (
+                {todoList.map(({id, todoID, name}, index) => (
                     <TodoData key={todoID}>
                         <TodoName>{index + 1}. {name}</TodoName>
-                        <DeleteIcon onClick={() => removeTodo(todoID)} />
+                        <DeleteIcon onClick={() => removeTodo(id, todoID)} />
                     </TodoData>
                 ))}
             </TodoListContainer>}
