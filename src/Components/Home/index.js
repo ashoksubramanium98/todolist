@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import randomInt from 'random-int';
-import AddTodoModal from './ui/Modal';
+import AddTodoModal from '../ui/Modal';
 import {Container, Header, AddIcon, TodoListContainer, TodoData, TodoName, DeleteIcon} from './styles';
 
 class Home extends Component{
