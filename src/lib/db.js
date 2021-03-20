@@ -24,7 +24,6 @@ const createDB = (name, version, stores) => {
                 stores.forEach((store) => {
                     if (store.data !== undefined) {
                         let tx = db.transaction([store.name], "readwrite");
-
                         store.data.forEach((data) => {
                             let allData = tx.objectStore(store.name).getAll();
                             allData.onsuccess = (e) => {

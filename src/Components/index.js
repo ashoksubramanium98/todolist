@@ -22,7 +22,7 @@ const Todo = () => {
         );
 
         let onLine = window.navigator.onLine;
-        onLine && await Axios.delete(`https://6054ca5bd4d9dc001726e058.mockapi.io/todo/${id}`);
+        (onLine && id) && await Axios.delete(`https://6054ca5bd4d9dc001726e058.mockapi.io/todo/${id}`);
         setTimeout(() => setTodoList(remaining), 300);
     };
 
@@ -30,9 +30,9 @@ const Todo = () => {
         <Container>
             <Header>Todo List</Header>
             <AddTodo />
-            {(todoList.length === 0) ? <p style={{textAlign: 'center', color: '#333'}}>Add your first todo</p> : 
+            {(todoList && todoList.length === 0) ? <p style={{textAlign: 'center', color: '#333'}}>Add your first todo</p> : 
             <TodoListContainer>
-                {todoList.map(({id, todoID, name}, index) => (
+                {todoList && todoList.map(({id, todoID, name}, index) => (
                     <TodoData key={todoID}>
                         <TodoName>{index + 1}. {name}</TodoName>
                         <DeleteIcon onClick={() => removeTodo(id, todoID)} />
